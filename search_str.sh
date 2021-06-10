@@ -21,7 +21,7 @@ elif [ $# -eq 1 ];then
     STRING=$1;
 else
     echo "Wrong arguments."
-    echo -e "Usage:\n\tbash search_str.sh [SEARTCH_ROOT] PATTERN"
+    echo -e "Usage:\n\t$0 [SEARTCH_ROOT] PATTERN"
     exit 1;
 fi
 
