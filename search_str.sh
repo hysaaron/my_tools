@@ -5,10 +5,10 @@
 # Author: hysaaron
 # Email: 412739506@qq.com
 # Filename: search_str.sh
-# Description: Search string among .py files in specified root.
+# Description: Search codes among .py files in specified root.
 # 
-# Version 0.1
-#   Fix problem of finding .pyc files.
+# Version 1.0
+#   Support regular expression.
 #
 ################################################################################
 
@@ -26,10 +26,10 @@ fi
 
 for i in `find $SEARCH_ROOT -name "*.py" `;
 do
-    num=`grep $STRING $i | wc -l`;
+    num=`egrep $STRING $i | wc -l`;
     if [ $num -gt 0 ];then
         echo $i;
-        cat -n $i | grep $STRING;
+        cat -n $i | egrep $STRING;
         echo;
     fi
 done
