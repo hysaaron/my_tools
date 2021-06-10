@@ -7,8 +7,9 @@
 # Filename: search_str.sh
 # Description: Search codes among files in specified root.
 # 
-# Version 2.0
+# Version 2.1
 #   Support multiple file extensions, and match only whole words.
+#   Add color for grep.
 #
 ################################################################################
 
@@ -35,7 +36,7 @@ ext=(.py \
     .sh\
     )
 
-GREP="grep -E -w"
+GREP="grep --color -E -w"
 
 for e in ${ext[@]};
 do
