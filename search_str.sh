@@ -6,9 +6,9 @@
 # Email: 412739506@qq.com
 # Filename: search_str.sh
 # Description: Search string among .py files in specified root.
-#
-# Version 0.0
-#   Search string among .py files in specified root.
+# 
+# Version 0.1
+#   Fix problem of finding .pyc files.
 #
 ################################################################################
 
@@ -24,7 +24,7 @@ else
     exit 1;
 fi
 
-for i in `find $SEARCH_ROOT | grep "\.py"`;
+for i in `find $SEARCH_ROOT -name "*.py" `;
 do
     num=`grep $STRING $i | wc -l`;
     if [ $num -gt 0 ];then
