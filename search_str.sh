@@ -7,9 +7,8 @@
 # Filename: search_str.sh
 # Description: Search codes among files in specified root.
 # 
-# Version 2.1
-#   Support multiple file extensions, and match only whole words.
-#   Add color for grep.
+# Version 3.0
+#   Get rid of find, using only grep.
 #
 ################################################################################
 
@@ -36,17 +35,9 @@ ext=(.py \
     .sh\
     )
 
-GREP="grep --color -E -w"
+GREP="grep --color -Ewrn"
 
 for e in ${ext[@]};
 do
-    for file in `find $SEARCH_ROOT -name "*"$e`;
-    do
-        num=`$GREP $STRING $file | wc -l`;
-        if [ $num -gt 0 ];then
-            echo $file;
-            cat -n $file | $GREP $STRING;
-            echo;
-        fi
-    done
+    $GREP --include="*"$e $STRING $SEARCH_ROOT;
 done
