@@ -5,10 +5,10 @@
 # Author: hysaaron
 # Email: 412739506@qq.com
 # Filename: search_str.sh
-# Description: Search codes among .py files in specified root.
+# Description: Search codes among files in specified root.
 # 
-# Version 1.0
-#   Support regular expression.
+# Version 2.0
+#   Support multiple file extensions, and match only whole words.
 #
 ################################################################################
 
@@ -20,16 +20,32 @@ elif [ $# -eq 1 ];then
     SEARCH_ROOT=.;
     STRING=$1;
 else
-    echo -e "Wrong arguments.\nUsage:\n\tbash search_str.sh [SEARTCH_ROOT] STRING":
+    echo "Wrong arguments."
+    echo -e "Usage:\n\tbash search_str.sh [SEARTCH_ROOT] PATTERN"
     exit 1;
 fi
 
-for i in `find $SEARCH_ROOT -name "*.py" `;
+ext=(.py \
+    .cpp \
+    .hpp \
+    .cc \
+    .hh \
+    .c \
+    .h \
+    .sh\
+    )
+
+GREP="grep -E -w"
+
+for e in ${ext[@]};
 do
-    num=`egrep $STRING $i | wc -l`;
-    if [ $num -gt 0 ];then
-        echo $i;
-        cat -n $i | egrep $STRING;
-        echo;
-    fi
+    for file in `find $SEARCH_ROOT -name "*"$e`;
+    do
+        num=`$GREP $STRING $file | wc -l`;
+        if [ $num -gt 0 ];then
+            echo $file;
+            cat -n $file | $GREP $STRING;
+            echo;
+        fi
+    done
 done
