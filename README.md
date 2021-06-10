@@ -16,5 +16,5 @@ my_tools
 `- Code search: search_str.sh
 ```
 ## Code search
-Search codes among .py files in a specified root.
+Search codes among files in a specified root.
 
