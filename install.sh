@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BIN_DIR=bin
+rm -rf $BIN_DIR
 mkdir -p $BIN_DIR
 
 tools=(search_str)
