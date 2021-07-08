@@ -12,3 +12,9 @@ do
 done
 
 export PATH=`pwd`/bin:$PATH
+
+# Install configurations of vim
+tar xjf vim-related.tar.bz2
+mv ~/.vim ~/.vimbak
+mv ~/.vimrc ~/.vimrcbak
+mv .vim* ~
