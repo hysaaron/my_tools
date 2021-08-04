@@ -20,7 +20,7 @@ mv .vim* ~
 
 # Install git-supported .bashrc
 echo "Installing git-related .bashrc";
-tar xjf git-bashrc.tar.bz2
+tar xjf git_bashrc.tar.bz2
 if [[ -e ~/.bashrc ]];then
   md5_current=$(md5sum ~/.bashrc | awk '{print $1}');
   md5_new=$(md5sum .bashrc | awk '{print $1}');
